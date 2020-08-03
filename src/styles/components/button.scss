@@ -1,0 +1,16 @@
+button[type="button"] {
+    font-weight: bold;
+    background: $black;
+    color: $white;
+    border: solid 2px $black;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background ease-in-out 0.2s, color ease-in-out 0.2s;
+
+    &:hover {
+        background: $white;
+        color: $black;
+    }
+}
