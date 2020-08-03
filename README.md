@@ -1,8 +1,8 @@
-## Webpack Tutorial
+# Webpack Tutorial
 
 Um projeto simples, destinado para aprender e experimentar com o Webpack e suas funcionalidades.
 
-# Inicializando projeto
+## Inicializando projeto
 
 - docker-compose up
 - docker-compose run node npm install yarn
@@ -14,9 +14,11 @@ Um projeto simples, destinado para aprender e experimentar com o Webpack e suas 
 - yarn
 - yarn start
 
-# Passos
+## Passos
 
-Levando em conta, um Webpack sem configuração anterior.
+### Asset management
+
+Levando em conta um projeto Webpack, sem configurações anterior (ou seja, do zero).
 
 1) Por padrão, o Webpack irá procurar uma pasta 'src' ao ser inicializado. Logo, crie uma pasta 'src', com um arquivo "index.js" dentro.
 
