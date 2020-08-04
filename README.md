@@ -1,4 +1,4 @@
-# Webpack Tutorial
+# Testando Webpack
 
 Um projeto simples, destinado para aprender e experimentar com o Webpack e suas funcionalidades.
 
