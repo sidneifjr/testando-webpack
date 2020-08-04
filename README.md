@@ -60,4 +60,29 @@ Obs.1: Se estiver usando Docker, será necessário um redirecionamento do localh
 Obs.2: Por algum motivo, usar o terminal do VS Code funciona normalmente até o momento de usar o CTRL-C, o que congela o mesmo.
 Portanto, opções como git bash ou cmder são recomendáveis.
 
-- Os próximos passos envolvem Output Management.
+### Opções para compilação do código em desenvolvimento.
+
+1 - Watch Mode
+
+É o mais básico, incluso no Webpack. Observa se houve alterações no código e compila automaticamente.
+No entanto, ele requer F5 no browser para exibir as alterações.
+
+2 - webpack-dev-server
+
+É um plugin que faz o mesmo do Watch Mode, porém ele oferece live reload e um web server simples.
+
+3 - webpack-dev-middleware
+
+Útil para builds mais customizadas.
+
+### Prefetching e preloading
+
+São diretivas inline usadas ao declarar os imports. Permitem ao webpack transmitir ao browser que:
+
+- Prefetch: é provável que tal recurso será necessário para alguma navegação futura.
+- Preload: o recurso pode ser necessário durante a navegação atual.
+
+Ex.: Em um componente **HomePage**, é renderizado um componente **LoginButton** que, por sua vez, carrega em
+demanda um componente **LoginModal** após ser clicado.
+
+

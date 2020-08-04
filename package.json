@@ -1,19 +1,21 @@
 {
   "name": "testando-webpack",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack"
-  },
+  "description": "Um projeto simples, destinado para aprender e experimentar com o Webpack e suas funcionalidades.",
+  "main": "main.js",
   "keywords": [],
-  "author": "",
+  "author": "Sidnei Farias Júnior",
   "license": "ISC",
+  "scripts": {
+    "start": "webpack-dev-server --open --mode=development",
+    "build": "webpack --env.NODE_ENV=local --env.production --progress",
+    "watch": "webpack --watch"
+  },
   "devDependencies": {
     "@babel/core": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
     "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.2.0",
     "file-loader": "^6.0.0",
     "html-loader": "^1.1.0",
@@ -28,6 +30,5 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
     "yarn": "^1.22.4"
-  },
-  "dependencies": {}
+  }
 }
