@@ -85,4 +85,55 @@ São diretivas inline usadas ao declarar os imports. Permitem ao webpack transmi
 Ex.: Em um componente **HomePage**, é renderizado um componente **LoginButton** que, por sua vez, carrega em
 demanda um componente **LoginModal** após ser clicado.
 
+### Performance
+
+- Sempre usar a versão mais recente do Webpack, node.js e npm/yarn.
++ As versões mais recentes dos package managers possuem árvores de módulos mais eficientes e com
+maior velocidade de resolução.
+
+- Aplique os loaders para o número mínimo necessário de módulos. Ao invés de:
+
+```
+module.exports = {
+  //...
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+      },
+    ],
+  },
+};
+```
+
+Use o parâmetro 'include' para aplicar o loader somente ao módulo que deve ser transformado:
+
+```
+const path = require('path');
+
+module.exports = {
+  //...
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        include: path.resolve(__dirname, 'src'),
+        loader: 'babel-loader',
+      },
+    ],
+  },
+};
+```
+
+- Cada loader ou plugin adicional possui um período de inicialização, portanto busque reduzir ao
+máximo as ferramentas usadas em um projeto.
+
+### Links essenciais
+
+https://webpack.js.org/guides/build-performance/
+
+https://webpack.js.org/guides/development/
+
+https://webpack.js.org/guides/production/
 
