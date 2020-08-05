@@ -159,6 +159,10 @@ module.exports = env => {
                     },
                 },
             },
-        },    
+        },
+
+        devServer: {
+            port: 9000,
+        },
     }
 };
