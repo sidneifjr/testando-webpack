@@ -2,8 +2,6 @@
 
 Um projeto simples, destinado para meu aprendizado e experimentação com o Webpack e suas funcionalidades.
 
-// Instalar Typescript e Storybook.
-
 ## Inicializando projeto
 
 - docker-compose up
