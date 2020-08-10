@@ -1,6 +1,8 @@
 # Testando Webpack
 
-Um projeto simples, destinado para aprender e experimentar com o Webpack e suas funcionalidades.
+Um projeto simples, destinado para meu aprendizado e experimentação com o Webpack e suas funcionalidades.
+
+// Instalar Typescript e Storybook.
 
 ## Inicializando projeto
 
@@ -88,7 +90,7 @@ demanda um componente **LoginModal** após ser clicado.
 ### Performance
 
 - Sempre usar a versão mais recente do Webpack, node.js e npm/yarn.
-+ As versões mais recentes dos package managers possuem árvores de módulos mais eficientes e com
+As versões mais recentes dos package managers possuem árvores de módulos mais eficientes e com
 maior velocidade de resolução.
 
 - Aplique os loaders para o número mínimo necessário de módulos. Ao invés de:
@@ -137,3 +139,33 @@ https://webpack.js.org/guides/development/
 
 https://webpack.js.org/guides/production/
 
+### Pasta build
+
+Antes do ajuste em produção:
+1,34MB
+
+Após ajuste em produção:
+1,27MB
+
+Após ajuste, sem "mode: production":
+1,31MB
+
+Após ajuste, com "devtool: none":
+1,27MB
+
+#### Pontos de atenção
+
+- Usar [contenthash] no arquivo de output da build causa maior tamanho nos arquivos?
+De 1,27MB foi para 1,31MB.
+
+- Após a separação, o chunk 'vendors' não é mais criado em produção.
+
+**INFLANDO TAMANHO DO BUILD NO PROJETO COM PLACEHOLDERS JS**
+
+Antes: 1,27MB
+
+Depois: 1,60MB
+
+### Typescript
+
+- Até o momento, instalar o mesmo retorna várias mensagens de erro, relacionados às dependências do projeto, e impede o auto-reload.
