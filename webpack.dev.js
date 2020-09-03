@@ -8,11 +8,11 @@ module.exports = merge(common, {
 
     output: {
         filename: 'main.[contenthash].js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'build'),
     },
 
     devServer: {
-        contentBase: './dist',
+        contentBase: './build',
     },
 
     devServer: {
