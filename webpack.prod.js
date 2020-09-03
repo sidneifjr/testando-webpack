@@ -9,7 +9,7 @@ module.exports = merge(common, {
 
     output: {
         filename: "main.[contenthash].js",
-        path: path.resolve(__dirname, "build"),
+        path: path.resolve(__dirname, "dist"),
     },
 
     plugins: [
