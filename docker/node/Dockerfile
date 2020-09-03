@@ -1,7 +1,7 @@
 FROM node:latest
 
-# RUN cd frontend
+# RUN cd src
 
-WORKDIR /frontend
+WORKDIR /src
 
 RUN npm install

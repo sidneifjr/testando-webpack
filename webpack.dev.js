@@ -7,15 +7,12 @@ module.exports = merge(common, {
     devtool: 'inline-source-map',
 
     output: {
-        filename: 'main.[contenthash].js',
+        filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'build'),
     },
 
     devServer: {
         contentBase: './build',
-    },
-
-    devServer: {
         port: 9000,
     },
 });

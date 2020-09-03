@@ -115,7 +115,7 @@ module.exports = {
     plugins: [
         new HtmlWebPackPlugin({
             title: '',
-            template: "./src/index.pug",
+            template: "./src/views/index.pug",
             filename: "./index.html",
             hash: false
         }),

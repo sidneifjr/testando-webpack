@@ -8,7 +8,7 @@ module.exports = merge(common, {
     devtool: false,
 
     output: {
-        filename: "main.[contenthash].js",
+        filename: "[name].[contenthash].js",
         path: path.resolve(__dirname, "build"),
     },
 
