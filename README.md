@@ -41,6 +41,7 @@ Levando em conta um projeto Webpack, sem configurações anterior (ou seja, do z
 - Em "use", é definido o loader e suas opções.
 
 - Dentro de module.exports mas fora de "rules", criamos um array "plugins". No mesmo, é indicado onde o template e o nome do arquivo se encontram, para o plugin específico.
+
 No caso do "HtmlWebPackPlugin", os arquivos HTML necessários são definidos.
 
 7) Rode **npm run build** ou **docker-compose up** novamente. Agora, o index.html será reconhecido e gerado apropriadamente após o build.
@@ -57,7 +58,8 @@ Então, rode **yarn add -D file-loader** e o inclua ao array "rules".
 
 Obs.1: Se estiver usando Docker, será necessário um redirecionamento do localhost, de 8080 para 9000, de acordo com o **docker-compose.yml**. O localhost padrão do webpack é 8080.
 
-Obs.2: Por algum motivo, usar o terminal do VS Code funciona normalmente até o momento de usar o CTRL-C, o que congela o mesmo.
+Obs.2: Por algum motivo, usar o terminal do VS Code funciona normalmente até usar CTRL-C, o que congela o mesmo.
+
 Portanto, opções como git bash ou cmder são recomendáveis.
 
 ### Opções para compilação do código em desenvolvimento.
@@ -145,11 +147,16 @@ Antes do ajuste em produção:
 Após ajuste em produção:
 1,27MB
 
-Após ajuste, sem "mode: production":
+Sem "mode: production":
 1,31MB
 
-Após ajuste, com "devtool: none":
-1,27MB
+- Testando build inflando tamanho
+
+Antes: 1,27MB
+
+Depois: 1,60MB
+
+O mesmo, após "devtool: false": 1,37MB
 
 #### Pontos de atenção
 
@@ -158,12 +165,6 @@ De 1,27MB foi para 1,31MB.
 
 - Após a separação, o chunk 'vendors' não é mais criado em produção.
 
-**INFLANDO TAMANHO DO BUILD NO PROJETO COM PLACEHOLDERS JS**
-
-Antes: 1,27MB
-
-Depois: 1,60MB
-
 ### Typescript
 
-- Até o momento, instalar o mesmo retorna várias mensagens de erro, relacionados às dependências do projeto, e impede o auto-reload.
+Funcional.

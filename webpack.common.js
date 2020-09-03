@@ -1,16 +1,9 @@
 const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-    entry: './src/scripts/main.js',
-    // entry: './src/scripts/main.ts',
-
-    output: {
-        filename: '[name].[contenthash].js',
-        path: path.resolve(__dirname, 'dist'),
-    },
+    entry: './src/scripts/main.ts',
 
     module: {
         rules: [
@@ -19,10 +12,18 @@ module.exports = {
                 use: [
                     {
                         loader: "html-loader",
-                        options: { minimize: true }
+                        options: {
+                            minimize: true,
+                        }
                     }
                 ]
             },
+
+            {
+                test: /\.pug$/,
+                use: ["pug-loader"]
+            },
+
             {
                 test: /\.scss$/,
                 use: [
@@ -31,84 +32,104 @@ module.exports = {
                     "sass-loader"
                 ]
             },
+
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader"
-                }
-            },
-            // {
-            //     test: /\.tsx?$/,
-            //     exclude: /node_modules/,
-            //     use: 'ts-loader',
-            // },
-            {
-                test: /\.(gif|png|jpe?g|svg)$/i,
                 use: [
-                    'file-loader',
-    
                     {
-                        loader: 'image-webpack-loader',
-                        options: {
-                            disable: true,
-                            mozjpeg: {
-                                progressive: true,
-                                quality: 65
-                            },
-    
-                            optipng: {
-                                enabled: false,
-                            },
-    
-                            pngquant: {
-                                quality: [0.65, 0.90],
-                                speed: 4
-                            },
-    
-                            gifsicle: {
-                                interlaced: false,
-                            },
-    
-                            webp: {
-                                quality: 75
-                            }
-                        }
+                        loader: "babel-loader",
                     },
                 ]
             },
+
+            {
+                test: /\.tsx$/,
+                exclude: /node_modules/,
+                use: 'ts-loader',
+                include: [path.resolve(__dirname, 'src/scripts')]
+            },
+
+            {
+                test: /\.(gif|jpe?g|png|svg)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+
+                        options: {
+                            name: "[name].[hash].[ext]",
+                            outputPath: "imgs"
+                        }
+                    },
+
+                    // {
+                    //     loader: 'image-webpack-loader',
+                    //     options: {
+                    //         disable: true,
+                    //         mozjpeg: {
+                    //             progressive: true,
+                    //             quality: 65
+                    //         },
+    
+                    //         optipng: {
+                    //             enabled: false,
+                    //         },
+    
+                    //         pngquant: {
+                    //             quality: [0.65, 0.90],
+                    //             speed: 4
+                    //         },
+    
+                    //         gifsicle: {
+                    //             interlaced: false,
+                    //         },
+    
+                    //         webp: {
+                    //             quality: 75
+                    //         }
+                    //     }
+                    // },
+                ]
+            },
+
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 use: [
-                    'file-loader',
+                    {
+                        loader: 'file-loader',
+
+                        options: {
+                            name: "[name].[ext]",
+                            outputPath: "fonts"
+                        }
+                    }
                 ],
             },
         ],
     },
 
-    // resolve: {
-    //     extensions: ['.tsx', '.ts', '.js'],
-    // },
-    
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js'],
+    },
+
     plugins: [
         new HtmlWebPackPlugin({
-            template: "./src/index.html",
-            filename: "./index.html"
+            title: '',
+            template: "./src/index.pug",
+            filename: "./index.html",
+            hash: false
         }),
 
         new MiniCssExtractPlugin({
             filename: "[name].css",
             chunkFilename: "[id].css"
         }),
-
-        new CleanWebpackPlugin({
-            cleanStaleWebpackAssets: false
-        }),
     ],
 
     optimization: {
         moduleIds: 'hashed', // o hash de vendor se manterá consistente entre builds.
         runtimeChunk: 'single',
+
         splitChunks: {
             cacheGroups: {
                 vendor: {
